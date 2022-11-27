@@ -1,9 +1,9 @@
 function fetchCountries(name) {
-  fetch('https://restcountries.com/v3.1/name/${name}')
-    .than(response => {
+  return fetch(`https://restcountries.com/v3.1/name/${name}`)
+    .then(response => {
       return response.json();
     })
-    .than(countries => {
+    .then(countries => {
       console.log(countries);
     })
     .catch(error => {
