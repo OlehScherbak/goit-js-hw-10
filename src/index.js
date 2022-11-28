@@ -41,7 +41,6 @@ function searchCountry(evt) {
 }
 
 function createMarkupPriview(countries) {
-  //   Notiflix.Notify.info('Found 2-10 countries');
   const countriesListMarkup = countries
     .map(({ flags, name }) => {
       return `
@@ -52,11 +51,11 @@ function createMarkupPriview(countries) {
 `;
     })
     .join('');
-  countriesList.innerHTML(countriesListMarkup);
+  countriesList.innerHTML = countriesListMarkup;
 }
 
 function createMarkupCountry(countries) {
-  const markup = countries
+  const countryCardMarkup = countries
     .map(({ name, capital, population, flags, languages }) => {
       return `<ul class="country-card">
     <li class="country-info-item">
@@ -71,7 +70,7 @@ function createMarkupCountry(countries) {
 </ul>`;
     })
     .join('');
-  countryCard.innerHTML = markup;
+  countryCard.innerHTML = countryCardMarkup;
 }
 
 function clearResultMurkup() {
