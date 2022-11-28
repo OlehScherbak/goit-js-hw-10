@@ -6,10 +6,10 @@ function fetchCountries(name) {
   });
   // .then(countries => {
   //   console.log(countries);
-  // });
+  // })
   // .catch(error => {
   //   console.log(error);
-  // });
+  // })
 }
 
 export { fetchCountries };
