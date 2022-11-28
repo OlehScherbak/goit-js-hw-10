@@ -19,7 +19,8 @@ body {
   margin-bottom: 16px;
 }
 
-.country-list {
+.country-list,
+.country-card {
   list-style: none;
   padding-left: 0;
 }
@@ -27,6 +28,11 @@ body {
   display: flex;
   align-items: center;
   background-color: #dee25c92;
+}
+
+.country-info-item {
+  display: flex;
+  align-items: center;
 }
 
 .country-item:not(:last-child) {

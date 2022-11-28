@@ -11,12 +11,13 @@ const countryCard = document.querySelector('.country-info');
 searchInput.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 
 function searchCountry(evt) {
+  clearResultMurkup();
+
   const searchedName = evt.target.value.trim();
+
   if (searchedName === '') {
     return;
   }
-
-  clearResultMurkup();
 
   fetchCountries(searchedName)
     .then(countries => {
@@ -40,7 +41,7 @@ function searchCountry(evt) {
 }
 
 function createMarkupPriview(countries) {
-  Notiflix.Notify.info('Found 2-10 countries');
+  //   Notiflix.Notify.info('Found 2-10 countries');
   const countriesListMarkup = countries
     .map(({ flags, name }) => {
       return `
@@ -51,11 +52,26 @@ function createMarkupPriview(countries) {
 `;
     })
     .join('');
-  countriesList.insertAdjacentHTML('beforeend', countriesListMarkup);
+  countriesList.innerHTML(countriesListMarkup);
 }
 
 function createMarkupCountry(countries) {
-  Notiflix.Notify.info('Found searched country');
+  const markup = countries
+    .map(({ name, capital, population, flags, languages }) => {
+      return `<ul class="country-card">
+    <li class="country-info-item">
+        <img class="country-flag" src="${flags[0]}" alt="flag of ${
+        name.official
+      }" width="30" height="20"/>
+        <h2>${name.official}</h2>
+    </li>
+    <li"><p><b>Capital: </b>${capital}</p></li>
+    <li"><p><b>Population: </b>${population}</p></li>
+    <li"><p><b>Languages: </b>${Object.values(languages)}</p></li>
+</ul>`;
+    })
+    .join('');
+  countryCard.innerHTML = markup;
 }
 
 function clearResultMurkup() {
